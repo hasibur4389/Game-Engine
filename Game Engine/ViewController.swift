@@ -10,6 +10,11 @@ import MetalKit
 
 class ViewController: UIViewController {
     
+    struct Vertex {
+        var position: float3
+        var color: float4
+    }
+    
     var metalView: MTKView {
         return view as! MTKView
     }
@@ -20,11 +25,7 @@ class ViewController: UIViewController {
     var device: MTLDevice!
     var commandQueue: MTLCommandQueue!
     var renderPipelineState: MTLRenderPipelineState!
-    let vertices:[float3] = [
-        float3(0, 1, 0), // TOP MIDDLE
-        float3(-1, -1, 0), // Bottom Left
-        float3(1, -1, 0) // Bottom Right
-    ]
+    var vertices: [Vertex]!
     
     var vertexBuffer: MTLBuffer!
     
@@ -39,12 +40,21 @@ class ViewController: UIViewController {
         commandQueue = device.makeCommandQueue()!
         
         createRenderPiplineState()
+        createVertices()
         createBuffers()
         metalView.delegate = self
     }
     
+    func createVertices(){
+        vertices = [
+            Vertex(position: float3(0, 1, 0), color: float4(1, 0, 0, 1)), // TOP MIDDLE
+            Vertex(position: float3(-1, -1, 0), color: float4(0, 1, 0, 1)), // Bottom Left
+            Vertex(position: float3(1, -1, 0), color: float4(0, 0, 1, 1)) // Bottom Right
+        ]
+    }
+    
     func createBuffers(){
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<float3>.stride * vertices.count, options: [])
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
     }
     func createRenderPiplineState(){
         
