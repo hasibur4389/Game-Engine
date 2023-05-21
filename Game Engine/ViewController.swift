@@ -20,6 +20,13 @@ class ViewController: UIViewController {
     var device: MTLDevice!
     var commandQueue: MTLCommandQueue!
     var renderPipelineState: MTLRenderPipelineState!
+    let vertices:[float3] = [
+        float3(0, 1, 0), // TOP MIDDLE
+        float3(-1, -1, 0), // Bottom Left
+        float3(1, -1, 0) // Bottom Right
+    ]
+    
+    var vertexBuffer: MTLBuffer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +39,13 @@ class ViewController: UIViewController {
         commandQueue = device.makeCommandQueue()!
         
         createRenderPiplineState()
+        createBuffers()
         metalView.delegate = self
     }
     
-    
+    func createBuffers(){
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<float3>.stride * vertices.count, options: [])
+    }
     func createRenderPiplineState(){
         
         // 1. Create libraries for vertex shader and fragment shader and colorpixel attachments
@@ -91,6 +101,11 @@ extension ViewController: MTKViewDelegate {
         renderCommandEncoder?.setRenderPipelineState(renderPipelineState)
         
         // send data to commandEncoder
+        
+        // setting vertext buffer to our device space
+        renderCommandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        // gonna draw vertices in a counter clockwise making a triange
+        renderCommandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
         
         renderCommandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
