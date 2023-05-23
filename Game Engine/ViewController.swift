@@ -65,11 +65,28 @@ class ViewController: UIViewController {
         
         // 2. create a render pipelineDescriptor
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
+        let vertexDescriptor = MTLVertexDescriptor()
+        
+         // position
+          // type of data
+        vertexDescriptor.attributes[0].format = .float3
+          // at which buffer we are allocationg this vertex
+        vertexDescriptor.attributes[0].bufferIndex = 0
+           // is it the first offset if not add the formats here
+        vertexDescriptor.attributes[0].offset = 0
+        // color
+        vertexDescriptor.attributes[1].format = .float4
+        vertexDescriptor.attributes[1].bufferIndex = 0
+        vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.size
+        
+        // What type (Vertex) memory for layout 0 where our three 1st attributes are located
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
         
         // 3. Attach pixelFormat , vertexFunc and fragmentFunc
         renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         renderPipelineDescriptor.vertexFunction = vertexFunction
         renderPipelineDescriptor.fragmentFunction = fragmentFunction
+        renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
         
         // create a renderPipelineState and assign descriptor to it
         do{
