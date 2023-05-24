@@ -16,6 +16,7 @@
 		F3DD42E82A1A0E1700BEF7FC /* MyShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F3DD42E72A1A0E1700BEF7FC /* MyShaders.metal */; };
 		F3F5F6FD2A1CCC3900092DAC /* Texurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */; };
 		F3F5F6FF2A1CDD7D00092DAC /* my.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3F5F6FE2A1CDD7D00092DAC /* my.jpg */; };
+		F3FB92732A1E2EF800B6BFDF /* ColorSeparatorFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB92722A1E2EF800B6BFDF /* ColorSeparatorFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F3DD42E72A1A0E1700BEF7FC /* MyShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MyShaders.metal; sourceTree = "<group>"; };
 		F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texurable.swift; sourceTree = "<group>"; };
 		F3F5F6FE2A1CDD7D00092DAC /* my.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = my.jpg; sourceTree = "<group>"; };
+		F3FB92722A1E2EF800B6BFDF /* ColorSeparatorFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +64,11 @@
 		F3DD42D22A1A0DA100BEF7FC /* Game Engine */ = {
 			isa = PBXGroup;
 			children = (
-				F3DD42D32A1A0DA100BEF7FC /* AppDelegate.swift */,
-				F3DD42D52A1A0DA100BEF7FC /* SceneDelegate.swift */,
-				F3DD42E72A1A0E1700BEF7FC /* MyShaders.metal */,
 				F3F5F6FE2A1CDD7D00092DAC /* my.jpg */,
 				F3DD42D72A1A0DA100BEF7FC /* ViewController.swift */,
+				F3FB92742A1E338100B6BFDF /* ColorSeparatorFilter */,
+				F3DD42D32A1A0DA100BEF7FC /* AppDelegate.swift */,
+				F3DD42D52A1A0DA100BEF7FC /* SceneDelegate.swift */,
 				F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */,
 				F3DD42D92A1A0DA100BEF7FC /* Main.storyboard */,
 				F3DD42DC2A1A0DA100BEF7FC /* Assets.xcassets */,
@@ -74,6 +76,15 @@
 				F3DD42E12A1A0DA100BEF7FC /* Info.plist */,
 			);
 			path = "Game Engine";
+			sourceTree = "<group>";
+		};
+		F3FB92742A1E338100B6BFDF /* ColorSeparatorFilter */ = {
+			isa = PBXGroup;
+			children = (
+				F3DD42E72A1A0E1700BEF7FC /* MyShaders.metal */,
+				F3FB92722A1E2EF800B6BFDF /* ColorSeparatorFilter.swift */,
+			);
+			path = ColorSeparatorFilter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 				F3DD42E82A1A0E1700BEF7FC /* MyShaders.metal in Sources */,
 				F3F5F6FD2A1CCC3900092DAC /* Texurable.swift in Sources */,
 				F3DD42D82A1A0DA100BEF7FC /* ViewController.swift in Sources */,
+				F3FB92732A1E2EF800B6BFDF /* ColorSeparatorFilter.swift in Sources */,
 				F3DD42D42A1A0DA100BEF7FC /* AppDelegate.swift in Sources */,
 				F3DD42D62A1A0DA100BEF7FC /* SceneDelegate.swift in Sources */,
 			);
