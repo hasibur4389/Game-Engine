@@ -7,19 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3C9DFB12A1F40AC00DBA801 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9DFB02A1F40AC00DBA801 /* MetalKit.framework */; };
+		F3C9DFB42A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9DFB32A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift */; };
+		F3C9DFBD2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9DFBC2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift */; };
+		F3C9DFC02A1F600C00DBA801 /* ColorSeparatorFilterOriginal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9DFBF2A1F600C00DBA801 /* ColorSeparatorFilterOriginal.swift */; };
+		F3C9DFC42A1F6BC800DBA801 /* BaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9DFC32A1F6BC800DBA801 /* BaseFilter.swift */; };
 		F3DD42D42A1A0DA100BEF7FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD42D32A1A0DA100BEF7FC /* AppDelegate.swift */; };
 		F3DD42D62A1A0DA100BEF7FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD42D52A1A0DA100BEF7FC /* SceneDelegate.swift */; };
 		F3DD42D82A1A0DA100BEF7FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD42D72A1A0DA100BEF7FC /* ViewController.swift */; };
 		F3DD42DB2A1A0DA100BEF7FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DD42D92A1A0DA100BEF7FC /* Main.storyboard */; };
 		F3DD42DD2A1A0DA100BEF7FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3DD42DC2A1A0DA100BEF7FC /* Assets.xcassets */; };
 		F3DD42E02A1A0DA100BEF7FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DD42DE2A1A0DA100BEF7FC /* LaunchScreen.storyboard */; };
-		F3DD42E82A1A0E1700BEF7FC /* MyShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F3DD42E72A1A0E1700BEF7FC /* MyShaders.metal */; };
+		F3DD42E82A1A0E1700BEF7FC /* ColorSeparatorShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F3DD42E72A1A0E1700BEF7FC /* ColorSeparatorShaders.metal */; };
 		F3F5F6FD2A1CCC3900092DAC /* Texurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */; };
 		F3F5F6FF2A1CDD7D00092DAC /* my.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3F5F6FE2A1CDD7D00092DAC /* my.jpg */; };
 		F3FB92732A1E2EF800B6BFDF /* ColorSeparatorFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB92722A1E2EF800B6BFDF /* ColorSeparatorFilter.swift */; };
+		F3FB92772A1E361700B6BFDF /* ColorSeparatorFilterRed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FB92762A1E361700B6BFDF /* ColorSeparatorFilterRed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F3C9DFB02A1F40AC00DBA801 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		F3C9DFB32A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilterGreen.swift; sourceTree = "<group>"; };
+		F3C9DFBC2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilterBlue.swift; sourceTree = "<group>"; };
+		F3C9DFBF2A1F600C00DBA801 /* ColorSeparatorFilterOriginal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilterOriginal.swift; sourceTree = "<group>"; };
+		F3C9DFC32A1F6BC800DBA801 /* BaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilter.swift; sourceTree = "<group>"; };
 		F3DD42D02A1A0DA100BEF7FC /* Game Engine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Engine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DD42D32A1A0DA100BEF7FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3DD42D52A1A0DA100BEF7FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,10 +39,11 @@
 		F3DD42DC2A1A0DA100BEF7FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3DD42DF2A1A0DA100BEF7FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3DD42E12A1A0DA100BEF7FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3DD42E72A1A0E1700BEF7FC /* MyShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MyShaders.metal; sourceTree = "<group>"; };
+		F3DD42E72A1A0E1700BEF7FC /* ColorSeparatorShaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorSeparatorShaders.metal; sourceTree = "<group>"; };
 		F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texurable.swift; sourceTree = "<group>"; };
 		F3F5F6FE2A1CDD7D00092DAC /* my.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = my.jpg; sourceTree = "<group>"; };
 		F3FB92722A1E2EF800B6BFDF /* ColorSeparatorFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilter.swift; sourceTree = "<group>"; };
+		F3FB92762A1E361700B6BFDF /* ColorSeparatorFilterRed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilterRed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +51,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C9DFB12A1F40AC00DBA801 /* MetalKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3C9DFAF2A1F40AC00DBA801 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3C9DFB02A1F40AC00DBA801 /* MetalKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F3C9DFB22A1F5B3F00DBA801 /* ColorSeparatorFilterGreen */ = {
+			isa = PBXGroup;
+			children = (
+				F3C9DFB32A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift */,
+			);
+			path = ColorSeparatorFilterGreen;
+			sourceTree = "<group>";
+		};
+		F3C9DFB72A1F5B9C00DBA801 /* ColorSeparatorFilterBlue */ = {
+			isa = PBXGroup;
+			children = (
+				F3C9DFBC2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift */,
+			);
+			path = ColorSeparatorFilterBlue;
+			sourceTree = "<group>";
+		};
+		F3C9DFBE2A1F5FE500DBA801 /* ColorSeparatorFilterOriginal */ = {
+			isa = PBXGroup;
+			children = (
+				F3C9DFBF2A1F600C00DBA801 /* ColorSeparatorFilterOriginal.swift */,
+			);
+			path = ColorSeparatorFilterOriginal;
+			sourceTree = "<group>";
+		};
 		F3DD42C72A1A0DA100BEF7FC = {
 			isa = PBXGroup;
 			children = (
 				F3DD42D22A1A0DA100BEF7FC /* Game Engine */,
 				F3DD42D12A1A0DA100BEF7FC /* Products */,
+				F3C9DFAF2A1F40AC00DBA801 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,10 +111,16 @@
 			isa = PBXGroup;
 			children = (
 				F3F5F6FE2A1CDD7D00092DAC /* my.jpg */,
+				F3C9DFC32A1F6BC800DBA801 /* BaseFilter.swift */,
+				F3DD42E72A1A0E1700BEF7FC /* ColorSeparatorShaders.metal */,
 				F3DD42D72A1A0DA100BEF7FC /* ViewController.swift */,
+				F3C9DFBE2A1F5FE500DBA801 /* ColorSeparatorFilterOriginal */,
+				F3C9DFB72A1F5B9C00DBA801 /* ColorSeparatorFilterBlue */,
+				F3C9DFB22A1F5B3F00DBA801 /* ColorSeparatorFilterGreen */,
+				F3FB92752A1E359F00B6BFDF /* ColorSeparatorFilterRed */,
 				F3FB92742A1E338100B6BFDF /* ColorSeparatorFilter */,
-				F3DD42D32A1A0DA100BEF7FC /* AppDelegate.swift */,
 				F3DD42D52A1A0DA100BEF7FC /* SceneDelegate.swift */,
+				F3DD42D32A1A0DA100BEF7FC /* AppDelegate.swift */,
 				F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */,
 				F3DD42D92A1A0DA100BEF7FC /* Main.storyboard */,
 				F3DD42DC2A1A0DA100BEF7FC /* Assets.xcassets */,
@@ -81,10 +133,17 @@
 		F3FB92742A1E338100B6BFDF /* ColorSeparatorFilter */ = {
 			isa = PBXGroup;
 			children = (
-				F3DD42E72A1A0E1700BEF7FC /* MyShaders.metal */,
 				F3FB92722A1E2EF800B6BFDF /* ColorSeparatorFilter.swift */,
 			);
 			path = ColorSeparatorFilter;
+			sourceTree = "<group>";
+		};
+		F3FB92752A1E359F00B6BFDF /* ColorSeparatorFilterRed */ = {
+			isa = PBXGroup;
+			children = (
+				F3FB92762A1E361700B6BFDF /* ColorSeparatorFilterRed.swift */,
+			);
+			path = ColorSeparatorFilterRed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,12 +218,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3DD42E82A1A0E1700BEF7FC /* MyShaders.metal in Sources */,
+				F3C9DFB42A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift in Sources */,
+				F3FB92772A1E361700B6BFDF /* ColorSeparatorFilterRed.swift in Sources */,
+				F3C9DFC02A1F600C00DBA801 /* ColorSeparatorFilterOriginal.swift in Sources */,
+				F3DD42E82A1A0E1700BEF7FC /* ColorSeparatorShaders.metal in Sources */,
 				F3F5F6FD2A1CCC3900092DAC /* Texurable.swift in Sources */,
 				F3DD42D82A1A0DA100BEF7FC /* ViewController.swift in Sources */,
+				F3C9DFC42A1F6BC800DBA801 /* BaseFilter.swift in Sources */,
 				F3FB92732A1E2EF800B6BFDF /* ColorSeparatorFilter.swift in Sources */,
 				F3DD42D42A1A0DA100BEF7FC /* AppDelegate.swift in Sources */,
 				F3DD42D62A1A0DA100BEF7FC /* SceneDelegate.swift in Sources */,
+				F3C9DFBD2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

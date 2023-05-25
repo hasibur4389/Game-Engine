@@ -11,18 +11,49 @@ import MetalKit
 
 class ViewController: UIViewController {
     
-    
-    
     var metalView: MTKView {
         return view as! MTKView
     }
-    override func loadView() {
-        self.view = MTKView()
-    }
+   
+//    override func loadView() {
+////        self.view = MTKView()
+////    }
     
     var device: MTLDevice!
     var colorSeparatorFilter: ColorSeparatorFilter!
+    var colorSeparatorFilterRed: ColorSeparatorFilterRed!
+    var colorSeparatorFilterGreen: ColorSeparatorFilterGreen!
+    var colorSeparatorFilterBlue: ColorSeparatorFilterBlue!
+    var colorSeparatorFilterOriginal: ColorSeparatorFilterOriginal!
     
+    
+    @IBAction func blueButtonPressed(_ sender: Any) {
+        colorSeparatorFilterBlue = ColorSeparatorFilterBlue(device: device, imageName: "my.jpg")
+        
+        
+        metalView.delegate = colorSeparatorFilterBlue
+    }
+    
+    @IBAction func greenButtonPressed(_ sender: Any) {
+        colorSeparatorFilterGreen = ColorSeparatorFilterGreen(device: device, imageName: "my.jpg")
+        
+        
+        metalView.delegate = colorSeparatorFilterGreen
+    }
+    
+    @IBAction func oringinalButtonPressed(_ sender: Any) {
+        colorSeparatorFilterOriginal = ColorSeparatorFilterOriginal(device: device, imageName: "my.jpg")
+        metalView.delegate = colorSeparatorFilterOriginal
+    }
+    
+    @IBAction func redButtonPressed(_ sender: Any) {
+        colorSeparatorFilterRed = ColorSeparatorFilterRed(device: device, imageName: "my.jpg")
+        
+        
+        metalView.delegate = colorSeparatorFilterRed
+    }
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +65,8 @@ class ViewController: UIViewController {
         metalView.colorPixelFormat = .bgra8Unorm
         
         colorSeparatorFilter = ColorSeparatorFilter(device: device, imageName: "my.jpg")
-        
-        
         metalView.delegate = colorSeparatorFilter
+       
     }
     
 }
