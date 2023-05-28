@@ -13,8 +13,8 @@ class ColorSeparatorFilterRed: BaseFilter{
     let vertexShaderName = "basic_vertex_shader"
     var fragmentShaderName = "textured_fragment_red"
     
-    init(device: MTLDevice, imageName: String) {
-        super.init(device: device, imageName: imageName, vertexShaderName: self.vertexShaderName, fragmentShaderName: self.fragmentShaderName)
+    init(device: MTLDevice, imageName: String, pickedImage: UIImage) {
+        super.init(device: device, imageName: imageName, vertexShaderName: self.vertexShaderName, fragmentShaderName: self.fragmentShaderName, pickedImage: pickedImage)
        
     }
     

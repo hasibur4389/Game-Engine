@@ -14,22 +14,33 @@ protocol Texturable {
 }
 
 extension Texturable {
-    func setTexture(device: MTLDevice, imageName: String) -> MTLTexture? {
+    func setTexture(device: MTLDevice, imageName: String, pickedImage: UIImage!) -> MTLTexture? {
         print("In setTexure")
         let textureLoader = MTKTextureLoader(device: device)
         var texture: MTLTexture!
         
-        do{
-            //let path = Bundle.main.path(forResource: imageName, ofType: nil)
-            //let textureURL = URL(fileURLWithPath: path!)
-            let textureURL = Bundle.main.url(forResource: imageName, withExtension: nil)
-          
-            texture = try textureLoader.newTexture(URL: textureURL!, options: [:])
+        if let pickedImage = pickedImage {
+        
+            do{
+                texture = try textureLoader.newTexture(cgImage: pickedImage.cgImage!, options: [:])
+            }
+            catch{
+                print("Couldn't texture image \(error)")
+            }
         }
-        catch{
-            print("error thrown in texture")
+        else{
+            print("didn't get Picked Image")
+            do{
+                //let path = Bundle.main.path(forResource: imageName, ofType: nil)
+                //let textureURL = URL(fileURLWithPath: path!)
+                let textureURL = Bundle.main.url(forResource: imageName, withExtension: nil)
+                
+                texture = try textureLoader.newTexture(URL: textureURL!, options: [:])
+            }
+            catch{
+                print("error thrown in texture \(error)")
+            }
         }
-      
         print("\(texture.width) AND \(texture.height)")
         return texture
         

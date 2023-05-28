@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F35C38F32A2322C40074595A /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35C38F22A2322C40074595A /* MyCollectionViewCell.swift */; };
 		F3C9DFB12A1F40AC00DBA801 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9DFB02A1F40AC00DBA801 /* MetalKit.framework */; };
 		F3C9DFB42A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9DFB32A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift */; };
 		F3C9DFBD2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C9DFBC2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F35C38F22A2322C40074595A /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3C9DFB02A1F40AC00DBA801 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		F3C9DFB32A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilterGreen.swift; sourceTree = "<group>"; };
 		F3C9DFBC2A1F5C3900DBA801 /* ColorSeparatorFilterBlue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSeparatorFilterBlue.swift; sourceTree = "<group>"; };
@@ -113,6 +115,8 @@
 				F3F5F6FE2A1CDD7D00092DAC /* my.jpg */,
 				F3C9DFC32A1F6BC800DBA801 /* BaseFilter.swift */,
 				F3DD42E72A1A0E1700BEF7FC /* ColorSeparatorShaders.metal */,
+				F35C38F22A2322C40074595A /* MyCollectionViewCell.swift */,
+				F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */,
 				F3DD42D72A1A0DA100BEF7FC /* ViewController.swift */,
 				F3C9DFBE2A1F5FE500DBA801 /* ColorSeparatorFilterOriginal */,
 				F3C9DFB72A1F5B9C00DBA801 /* ColorSeparatorFilterBlue */,
@@ -121,7 +125,6 @@
 				F3FB92742A1E338100B6BFDF /* ColorSeparatorFilter */,
 				F3DD42D52A1A0DA100BEF7FC /* SceneDelegate.swift */,
 				F3DD42D32A1A0DA100BEF7FC /* AppDelegate.swift */,
-				F3F5F6FC2A1CCC3900092DAC /* Texurable.swift */,
 				F3DD42D92A1A0DA100BEF7FC /* Main.storyboard */,
 				F3DD42DC2A1A0DA100BEF7FC /* Assets.xcassets */,
 				F3DD42DE2A1A0DA100BEF7FC /* LaunchScreen.storyboard */,
@@ -220,6 +223,7 @@
 			files = (
 				F3C9DFB42A1F5B7B00DBA801 /* ColorSeparatorFilterGreen.swift in Sources */,
 				F3FB92772A1E361700B6BFDF /* ColorSeparatorFilterRed.swift in Sources */,
+				F35C38F32A2322C40074595A /* MyCollectionViewCell.swift in Sources */,
 				F3C9DFC02A1F600C00DBA801 /* ColorSeparatorFilterOriginal.swift in Sources */,
 				F3DD42E82A1A0E1700BEF7FC /* ColorSeparatorShaders.metal in Sources */,
 				F3F5F6FD2A1CCC3900092DAC /* Texurable.swift in Sources */,
@@ -378,6 +382,7 @@
 				DEVELOPMENT_TEAM = 3TS722284J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Game Engine/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to the photo library to save and upload images.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -406,6 +411,7 @@
 				DEVELOPMENT_TEAM = 3TS722284J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Game Engine/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to the photo library to save and upload images.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -28,6 +28,7 @@ class BaseFilter: NSObject {
 
 //    var deltaPosition: Float = 0
 //    var time: Float = 0
+    var pickedImage: UIImage!
    
 
     
@@ -35,12 +36,13 @@ class BaseFilter: NSObject {
     var texture: MTLTexture?
     var vertexBuffer: MTLBuffer!
     
-    init(device: MTLDevice, imageName: String, vertexShaderName: String, fragmentShaderName: String) {
+    init(device: MTLDevice, imageName: String, vertexShaderName: String, fragmentShaderName: String, pickedImage: UIImage) {
         super.init()
         self.device = device
         commandQueue = device.makeCommandQueue()!
+        self.pickedImage = pickedImage
 
-        if let texture = self.setTexture(device: device, imageName: imageName){
+        if let texture = self.setTexture(device: device, imageName: imageName, pickedImage: pickedImage){
             self.texture = texture
         }
 
@@ -55,14 +57,14 @@ class BaseFilter: NSObject {
     
        vertices = [
         // Triangle 1
-        Vertex(position: float3(-1.0, 1.0, 0), color: float4(1, 0, 0, 1), texture: float2(0,0)), // TOP Left
+        Vertex(position: float3(-1.0, 0.80, 0), color: float4(1, 0, 0, 1), texture: float2(0,0)), // TOP Left
         Vertex(position: float3(-1, -0.65, 0), color: float4(0, 1, 0, 1), texture: float2(0, 1)), // Bottom Left
         Vertex(position: float3(1, -0.65, 0), color: float4(0, 0, 1, 1), texture: float2(1,1)), // Bottom Right
         // Triangle 2
-        Vertex(position: float3(-1.0, 1.0, 0), color: float4(1, 0, 0, 1), texture: float2(0,0)),  // TOP Left
-        Vertex(position: float3(1, 1, 0), color: float4(0, 1, 0, 1), texture: float2(1,0)), // TOP Right
-        Vertex(position: float3(1, -0.65, 0), color: float4(0, 0, 1, 1), texture: float2(1, 1))
-        ]// Bottom
+        Vertex(position: float3(-1.0, 0.80, 0), color: float4(1, 0, 0, 1), texture: float2(0,0)),  // TOP Left
+        Vertex(position: float3(1, 0.80, 0), color: float4(0, 1, 0, 1), texture: float2(1,0)), // TOP Right
+        Vertex(position: float3(1, -0.65, 0), color: float4(0, 0, 1, 1), texture: float2(1, 1)) // Bottom Right
+        ]
 
     }
 //
@@ -120,6 +122,10 @@ class BaseFilter: NSObject {
     func valuePass(encoder: MTLRenderCommandEncoder) {
         // do nothing. to be overridden
     }
+    
+    func saveTextureImage( texture: MTLTexture!){
+        // do nothing, to be overridden
+    }
 
 
 }
@@ -170,12 +176,17 @@ extension BaseFilter: MTKViewDelegate {
         valuePass(encoder: renderCommandEncoder!)
         // gonna draw vertices in a counter clockwise making a triange
         renderCommandEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
-        
+       
         renderCommandEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
         
         
+        // save current Textured Image
+       
+        //saveTextureImage(texture: renderPassDescriptor.colorAttachments[0].texture)
+       
+
        
     }
     
