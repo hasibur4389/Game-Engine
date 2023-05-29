@@ -24,10 +24,7 @@ class ColorSeparatorFilterOriginal: BaseFilter{
        
     }
     
-    override func saveTextureImage(texture: MTLTexture!) {
-        textureImage = texture
-        
-    }
+ 
     
     
 }

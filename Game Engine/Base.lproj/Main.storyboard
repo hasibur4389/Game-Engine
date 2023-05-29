@@ -63,17 +63,17 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvQ-HL-1QJ">
-                                <rect key="frame" x="30" y="53" width="176" height="35"/>
+                                <rect key="frame" x="30" y="79" width="176" height="35"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Pick from Gallery"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Pick"/>
                                 <connections>
                                     <action selector="pickImageFromGallery:" destination="BYZ-38-t0r" eventType="touchUpInside" id="caM-0l-mh4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKz-94-cD0">
-                                <rect key="frame" x="302" y="53" width="61" height="35"/>
+                                <rect key="frame" x="302" y="79" width="61" height="35"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -87,13 +87,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b6z-8C-ydS" secondAttribute="trailing" id="7gZ-Ow-sb7"/>
-                            <constraint firstItem="b6z-8C-ydS" firstAttribute="top" secondItem="QvQ-HL-1QJ" secondAttribute="bottom" constant="642" id="P8m-US-Ndu"/>
+                            <constraint firstItem="b6z-8C-ydS" firstAttribute="top" secondItem="QvQ-HL-1QJ" secondAttribute="bottom" constant="616" id="P8m-US-Ndu"/>
                             <constraint firstItem="b6z-8C-ydS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Qe6-tM-qM5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NKz-94-cD0" secondAttribute="trailing" constant="30" id="W7X-jF-Yp4"/>
                             <constraint firstItem="NKz-94-cD0" firstAttribute="leading" secondItem="QvQ-HL-1QJ" secondAttribute="trailing" constant="96" id="ar8-fA-scV"/>
                             <constraint firstItem="QvQ-HL-1QJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="iM7-Ls-iZL"/>
                             <constraint firstItem="b6z-8C-ydS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vRe-e4-oq4"/>
-                            <constraint firstItem="b6z-8C-ydS" firstAttribute="top" secondItem="NKz-94-cD0" secondAttribute="bottom" constant="642" id="y1a-yR-cVq"/>
+                            <constraint firstItem="b6z-8C-ydS" firstAttribute="top" secondItem="NKz-94-cD0" secondAttribute="bottom" constant="616" id="y1a-yR-cVq"/>
                         </constraints>
                     </view>
                 </viewController>

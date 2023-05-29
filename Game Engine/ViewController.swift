@@ -33,28 +33,20 @@ class ViewController: UIViewController {
     
     @IBAction func saveImage(_ sender: UIButton) {
         
-        guard let textureImage = colorSeparatorFilterBlue.textureImage else {
-                print("Texture image is nil.")
-                return
-            }
-
-        print("width = \(textureImage.width) and heigh = \(textureImage.height)" )
-    //print(textureImage)
-        let ciImage = CIImage(mtlTexture: textureImage, options: [:])
-         let ciContext = CIContext()
-            
-        guard let cgImage = ciContext.createCGImage(ciImage!, from: ciImage!.extent) else {
-                print("Failed to convert texture image to UIImage.")
-                return
-            }
-            
-            let uiImage = UIImage(cgImage: cgImage)
-            
-            guard let imageData = uiImage.pngData() else {
-                print("Failed to convert UIImage to PNG data.")
-                return
-            }
+//        let context = CIContext()
+//        let texture = (metalView.currentDrawable?.texture)!
+//        print("width = \(texture.width) and height = \(texture.height)")
+//        let cImg = CIImage(mtlTexture: texture, options: [:])!
+//        let cgImg = context.createCGImage(cImg, from: cImg.extent)!
+//        let uiImg = UIImage(cgImage: cgImg)
         
+        let lastDrawableDisplayed = metalView.currentDrawable?.texture
+        var uiImage: UIImage!
+        if let imageRef = lastDrawableDisplayed?.toImage() {
+             uiImage = UIImage.init(cgImage: imageRef)
+        }
+        
+        // Had to put Phot and Privacy authorization in info section
         PHPhotoLibrary.requestAuthorization { status in
                if status == .authorized {
                    PHPhotoLibrary.shared().performChanges {
@@ -66,42 +58,14 @@ class ViewController: UIViewController {
                            print("Error saving image to gallery: \(error.localizedDescription)")
                        } else {
                            print("Image saved to gallery successfully.")
+                          
                        }
                    }
                }
            }
         
         
-//        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            print("Failed to access documents directory.")
-//            return
-//        }
-//
-//        // Create the Documents directory if it doesn't exist
-//        do {
-//            try FileManager.default.createDirectory(at: documentsDirectory, withIntermediateDirectories: true, attributes: nil)
-//        } catch {
-//            print("Failed to create documents directory: \(error.localizedDescription)")
-//            return
-//        }
-        
-        
-        
-        
-            
-//            guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//                print("Failed to access documents directory.")
-//                return
-//            }
-//
-//            let fileURL = documentsDirectory.appendingPathComponent("textureImage.png")
-//
-//            do {
-//                try imageData.write(to: fileURL)
-//                print("Texture image saved successfully.")
-//            } catch {
-//                print("Error saving texture image: \(error.localizedDescription)")
-//            }
+
     }
     
     @IBAction func pickImageFromGallery(_ sender: UIButton) {
@@ -137,6 +101,10 @@ class ViewController: UIViewController {
         
         metalView.colorPixelFormat = .bgra8Unorm
         
+        // to save the image and avoid  _validateGetBytes:71: failed assertion `Get Bytes Validation
+       // texture must not be a framebufferOnly texture.  result.itemProvider.loadObject(ofClass: UIImage.self) , the framebufferOnly property is set to true, indicating that the texture can only be used as a source for rendering, and it cannot be written to or modified.
+        metalView.framebufferOnly = false;
+        
 
         
         
@@ -146,6 +114,8 @@ class ViewController: UIViewController {
         myFilters.append(createLabel(label: FiltersName.Red.rawValue))
         myFilters.append(createLabel(label: FiltersName.Green.rawValue))
         myFilters.append(createLabel(label: FiltersName.Blue.rawValue))
+        
+        
 
         
     }
@@ -163,16 +133,18 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: PHPickerViewControllerDelegate {
+    
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         
         for result in results {
+            // run on bg thread
             result.itemProvider.loadObject(ofClass: UIImage.self) {
                 object, error in
                 if let image = object as? UIImage{
                     self.pickedImage = image
                 
-                    // added sequentially action, ensure loading of picked image first then this
+                    // added sequentially action, ensure loading of picked image first then this, run on main thread
                     DispatchQueue.main.async {
                         self.colorSeparatorFilter = ColorSeparatorFilter(device: self.device, imageName: self.ImageName, pickedImage: self.pickedImage)
                                           self.metalView.delegate = self.colorSeparatorFilter
@@ -185,14 +157,11 @@ extension ViewController: PHPickerViewControllerDelegate {
             }
         }
         
-        
-        // default texture
-        
-    
-        
-        
+     
         
     }
+    
+    
 }
     
 
@@ -254,3 +223,62 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
 }
+
+
+
+
+ 
+
+
+extension MTLTexture {
+
+    
+    // Extracts raw pixel data from the current texture and store them in a buffere pointer
+     func bytes() -> UnsafeMutableRawPointer {
+         let width = self.width
+         let height   = self.height
+         let rowBytes = self.width * 4
+         let p = malloc(width * height * 4)
+
+         // MTLRegionMake2D selects the area of the texture, 0,0 means the starting position and width and height indicates how much of the whole texture to be extrated in this case the whole texture
+         // mipmap , lower resolution of the texture, 0 means original resolution, 1 means first reduced texture, could be used for thumbnail etc.
+         self.getBytes(p!, bytesPerRow: rowBytes, from: MTLRegionMake2D(0, 0, width, height), mipmapLevel: 0)
+
+         return p!
+     }
+
+     func toImage() -> CGImage? {
+         let p = bytes()
+
+      //   print(type(of: p))
+         // Creating a RGB color-space(range of colors tht can be displayed or rendered) to be used for CGImage
+         let pColorSpace = CGColorSpaceCreateDeviceRGB()
+
+         // These flags determine how the pixel data is interpreted and arranged in memory when creating a CGImage, ARGB id A-alpha exists, Order lest significant byte is stored first in the memory
+         let rawBitmapInfo = CGImageAlphaInfo.noneSkipFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
+         let bitmapInfo:CGBitmapInfo = CGBitmapInfo(rawValue: rawBitmapInfo)
+         
+         
+          // total pixel size * 4 bytes = total memory & number of bytes per row
+         let selftureSize = self.width * self.height * 4
+         let rowBytes = self.width * 4
+         
+         
+         // Creates an instance of CGDataProvider, it will use the supplied pixel data to create UIImage, , you can control the memory management of the pixel data associated with the CGImage. It allows you to manage the lifetime of the pixel data according to your specific requirements
+         let releaseMaskImagePixelData: CGDataProviderReleaseDataCallback = { (info: UnsafeMutableRawPointer?, data: UnsafeRawPointer, size: Int) -> () in
+             return
+         }
+         let provider = CGDataProvider(dataInfo: nil, data: p, size: selftureSize, releaseData: releaseMaskImagePixelData)
+         
+         
+            // 8 & 32 are bits , bitspPerComponent 1 byTe = 8 BITS per RGBA, bitsPerPixel 4 bytes = 32 bits
+         let cgImageRef = CGImage(width: self.width, height: self.height, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: rowBytes, space: pColorSpace, bitmapInfo: bitmapInfo, provider: provider!, decode: nil, shouldInterpolate: true, intent: CGColorRenderingIntent.defaultIntent)!
+
+         return cgImageRef
+     }
+ }
+
+//
+ 
+ 
+

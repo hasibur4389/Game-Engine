@@ -72,7 +72,8 @@ class BaseFilter: NSObject {
     func createBuffers(){
         vertexBuffer = device.makeBuffer(bytes: vertices, length: MemoryLayout<Vertex>.stride * vertices.count, options: [])
     }
-        
+    
+    
     func createRenderPiplineState(vertexShaderName: String, fragmentShaderName: String){
 
         // 1. Create libraries for vertex shader and fragment shader and colorpixel attachments
@@ -122,10 +123,7 @@ class BaseFilter: NSObject {
     func valuePass(encoder: MTLRenderCommandEncoder) {
         // do nothing. to be overridden
     }
-    
-    func saveTextureImage( texture: MTLTexture!){
-        // do nothing, to be overridden
-    }
+ 
 
 
 }
@@ -170,6 +168,7 @@ extension BaseFilter: MTKViewDelegate {
         
         //setting vertext buffer to our device space
         renderCommandEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+        
         renderCommandEncoder?.setFragmentTexture(texture, index: 0)
         
         

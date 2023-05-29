@@ -24,8 +24,5 @@ class ColorSeparatorFilterBlue: BaseFilter{
     override func valuePass(encoder: MTLRenderCommandEncoder) {
        // encoder.setFragmentBytes(<#T##bytes: UnsafeRawPointer##UnsafeRawPointer#>, length: <#T##Int#>, index: <#T##Int#>)
     }
-    
-    override func saveTextureImage(texture: MTLTexture!) {
-        textureImage = texture
-    }
+ 
 }
