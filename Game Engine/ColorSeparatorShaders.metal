@@ -85,7 +85,8 @@ fragment half4 textured_fragment(RasterizerData rd [[ stage_in ]], texture2d<flo
 
 
 //MARK: for original only pic
-fragment half4 textured_fragment_original(RasterizerData rd [[ stage_in ]], texture2d<float> texture [[ texture(0) ]]){
+fragment half4 textured_fragment_original(RasterizerData rd [[ stage_in ]], texture2d<float> texture [[ texture(0) ]], constant float &brightnessLevel [[ buffer(0) ]]){
+    
     constexpr sampler defaultSampler;
     
     // Calculate the texture coordinates for each quadrant
@@ -94,6 +95,9 @@ fragment half4 textured_fragment_original(RasterizerData rd [[ stage_in ]], text
     
     // Sample the textures for each quadrant
     float4 color = texture.sample(defaultSampler, rd.texCoord);
+    // Apply brightness adjustment to the color values
+    color.rgb *= brightnessLevel*5;
+    
     return half4(color.r, color.g, color.b, color.a);
 }
 

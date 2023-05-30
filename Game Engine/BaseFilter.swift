@@ -37,6 +37,7 @@ class BaseFilter: NSObject {
     var vertexBuffer: MTLBuffer!
     
     init(device: MTLDevice, imageName: String, vertexShaderName: String, fragmentShaderName: String, pickedImage: UIImage) {
+        
         super.init()
         self.device = device
         commandQueue = device.makeCommandQueue()!

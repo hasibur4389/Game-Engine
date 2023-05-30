@@ -82,20 +82,33 @@
                                     <action selector="saveImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LcX-uH-fv3"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="R2L-0m-CtY">
+                                <rect key="frame" x="84" y="693" width="224" height="30"/>
+                                <connections>
+                                    <action selector="brightnessSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Zp6-Ug-HRY"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b6z-8C-ydS" secondAttribute="trailing" id="7gZ-Ow-sb7"/>
+                            <constraint firstItem="b6z-8C-ydS" firstAttribute="top" secondItem="R2L-0m-CtY" secondAttribute="bottom" constant="8" id="BBH-EJ-NX4"/>
                             <constraint firstItem="b6z-8C-ydS" firstAttribute="top" secondItem="QvQ-HL-1QJ" secondAttribute="bottom" constant="616" id="P8m-US-Ndu"/>
                             <constraint firstItem="b6z-8C-ydS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Qe6-tM-qM5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NKz-94-cD0" secondAttribute="trailing" constant="30" id="W7X-jF-Yp4"/>
+                            <constraint firstItem="R2L-0m-CtY" firstAttribute="top" secondItem="QvQ-HL-1QJ" secondAttribute="bottom" constant="579" id="YO2-HV-1Zn"/>
                             <constraint firstItem="NKz-94-cD0" firstAttribute="leading" secondItem="QvQ-HL-1QJ" secondAttribute="trailing" constant="96" id="ar8-fA-scV"/>
                             <constraint firstItem="QvQ-HL-1QJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="iM7-Ls-iZL"/>
+                            <constraint firstItem="R2L-0m-CtY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="86" id="nmo-ia-mlA"/>
+                            <constraint firstItem="R2L-0m-CtY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-0.5" id="ugp-qE-QFq"/>
                             <constraint firstItem="b6z-8C-ydS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vRe-e4-oq4"/>
                             <constraint firstItem="b6z-8C-ydS" firstAttribute="top" secondItem="NKz-94-cD0" secondAttribute="bottom" constant="616" id="y1a-yR-cVq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="brightnessSlider" destination="R2L-0m-CtY" id="G0N-LL-Phm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

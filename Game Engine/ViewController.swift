@@ -16,8 +16,10 @@ class ViewController: UIViewController {
     var myFilters: [UILabel] = []
     var pickedImage: UIImage!
     var ImageName: String = "my.jpg"
+    var brightnessLevel: Float!
 
-  
+    @IBOutlet var brightnessSlider: UISlider!
+    
 
     var device: MTLDevice!
     var colorSeparatorFilter: ColorSeparatorFilter!
@@ -32,14 +34,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func saveImage(_ sender: UIButton) {
-        
-//        let context = CIContext()
-//        let texture = (metalView.currentDrawable?.texture)!
-//        print("width = \(texture.width) and height = \(texture.height)")
-//        let cImg = CIImage(mtlTexture: texture, options: [:])!
-//        let cgImg = context.createCGImage(cImg, from: cImg.extent)!
-//        let uiImg = UIImage(cgImage: cgImg)
-        
+
+        // Getting the current textured image on the screen
         let lastDrawableDisplayed = metalView.currentDrawable?.texture
         var uiImage: UIImage!
         if let imageRef = lastDrawableDisplayed?.toImage() {
@@ -63,10 +59,9 @@ class ViewController: UIViewController {
                    }
                }
            }
-        
-        
-
+      
     }
+    
     
     @IBAction func pickImageFromGallery(_ sender: UIButton) {
         
@@ -90,7 +85,16 @@ class ViewController: UIViewController {
     
 
     
-  
+    @IBAction func brightnessSliderChanged(_ sender: UISlider) {
+        // Pass the brightness value to your Metal shader or any other relevant logic
+        let brightnessValue = sender.value
+        brightnessLevel = brightnessValue
+        colorSeparatorFilterOriginal.brightnessLevel = brightnessValue
+        metalView.draw()
+        
+          
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +107,8 @@ class ViewController: UIViewController {
         
         // to save the image and avoid  _validateGetBytes:71: failed assertion `Get Bytes Validation
        // texture must not be a framebufferOnly texture.  result.itemProvider.loadObject(ofClass: UIImage.self) , the framebufferOnly property is set to true, indicating that the texture can only be used as a source for rendering, and it cannot be written to or modified.
-        metalView.framebufferOnly = false;
+        metalView.framebufferOnly = false
+        brightnessSlider.isHidden = true
         
 
         
@@ -185,6 +190,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
+        brightnessSlider.isHidden = false
+        
         // Switch to go to different features/filtered image
         let filter: String = myFilters[indexPath.item].text ?? "found nil"
         
